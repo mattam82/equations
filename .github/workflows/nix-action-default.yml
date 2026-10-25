@@ -12,6 +12,7 @@ jobs:
       uses: actions/checkout@v6
       with:
         fetch-depth: 0
+        allow-unsafe-pr-checkout: true
         ref: ${{ env.target_commit }}
     - name: Determine which commit to test
       run: "if [ ${{ github.event_name }} = \"push\" ]; then\n  echo \"tested_commit=${{
@@ -26,6 +27,7 @@ jobs:
       uses: actions/checkout@v6
       with:
         fetch-depth: 0
+        allow-unsafe-pr-checkout: true
         ref: ${{ env.tested_commit }}
     - name: Cachix install
       uses: cachix/install-nix-action@v31
